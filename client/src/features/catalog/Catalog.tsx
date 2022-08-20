@@ -75,7 +75,7 @@ export default function Catalog() {
             items={types}
             checked={productParams.types}
             onChange={(items: string[]) =>
-              dispatch(setProductParams({ brands: types }))
+              dispatch(setProductParams({ types: items }))
             }
           />
         </Paper>
