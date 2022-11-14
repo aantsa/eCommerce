@@ -1,3 +1,4 @@
+import { Typography } from "@material-ui/core";
 import {
   TableContainer,
   Paper,
@@ -32,6 +33,7 @@ export default function Orders() {
 
   return (
     <div>
+        <Typography gutterBottom variant="h4"> Orders</Typography>
       {!order ? (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
