@@ -1,19 +1,41 @@
-import { Button, ButtonGroup, Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
-import { decrement, increment } from "./counterSlice";
+import { Box, Button, ButtonGroup, Paper, Typography } from "@mui/material";
 
 export default function ContactPage() {
-  const dispatch = useAppDispatch();
-  const { data, title } = useAppSelector(state => state.counter);
   return (
     <>
-      <Typography variant="h5">{title}</Typography>
-      <Typography variant="h5">The Data is: {data}</Typography>
-      <ButtonGroup>
-        <Button onClick={() => dispatch(decrement(1))} variant="contained" color="error">Decrement</Button>
-        <Button onClick={() => dispatch(increment(1))} variant="contained" color="success">Increment</Button>
-        <Button onClick={() => dispatch(increment(5))} variant="contained" color="secondary">Increment by 5</Button>
-      </ButtonGroup>
+      <Paper>
+        <Box display="flex" sx={{ px: 4, pb: 4, pt: 3 }}>
+          <Typography variant="h2">Contact</Typography>
+        </Box>
+        <Box display="flex" sx={{ px: 4 }}>
+          <Typography variant="h5">
+            LinkedIn:{" "}
+            <span>
+              <a
+                href="https://www.linkedin.com/in/antonfagerholm/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Anton Fagerholm
+              </a>
+            </span>
+          </Typography>
+        </Box>
+        <Box display="flex" sx={{ px: 4, pb: 3 }}>
+          <Typography variant="h5">
+            GitHub:{" "}
+            <span>
+              <a
+                href="https://github.com/aantsa"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Anton Fagerholm
+              </a>
+            </span>
+          </Typography>
+        </Box>
+      </Paper>
     </>
   );
 }

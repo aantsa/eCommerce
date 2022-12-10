@@ -41,7 +41,7 @@ export default function BasketSummary() {
             <TableRow>
               <TableCell>
                 <span style={{ fontStyle: "italic" }}>
-                  *Orders over $100 qualify for free delivery
+                  *Orders over 100€ qualify for free delivery
                 </span>
               </TableCell>
             </TableRow>

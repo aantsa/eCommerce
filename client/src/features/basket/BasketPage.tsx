@@ -1,8 +1,4 @@
-import {
-  Grid,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Grid, Button, Typography, Paper } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { useAppSelector } from "../../app/store/configureStore";
 import BasketSummary from "./BasketSummary";
@@ -13,7 +9,13 @@ export default function BasketPage() {
   const history = useHistory();
 
   if (!basket)
-    return <Typography variant="h3"> Your basket is empty</Typography>;
+    return (
+      <>
+        <Paper sx={{px: 3, pt: 3, pb: 3}}>
+          <Typography variant="h3"> Your basket is empty</Typography>
+        </Paper>
+      </>
+    );
 
   return (
     <>

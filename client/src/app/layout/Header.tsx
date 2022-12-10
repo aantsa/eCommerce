@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAppSelector } from "../store/configureStore";
 import SignedInMenu from "./SignedInMenu";
@@ -21,7 +22,6 @@ interface Props {
 
 const midLinks = [
   { title: "catalog", path: "/catalog" },
-  { title: "about", path: "/about" },
   { title: "contact", path: "/contact" },
 ];
 
@@ -45,9 +45,10 @@ const navStyles = {
 export default function Header({ darkMode, handleThemeChange }: Props) {
   const { basket } = useAppSelector((state) => state.basket);
   const { user } = useAppSelector((state) => state.account);
+  const [ headerColor, setHeaderColor ] = useState('#6D9886');
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
   return (
-    <AppBar position="static" sx={{ mb: 4 }}>
+    <AppBar sx={{backgroundColor: headerColor}} position="static">
       <Toolbar
         sx={{
           display: "flex",
@@ -65,12 +66,15 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
           >
             eCommerce
           </Typography>
-          <Switch checked={darkMode} onChange={handleThemeChange} />
+          <Switch checked={darkMode} onChange={() => {
+            handleThemeChange()
+            headerColor === '393E46' ? setHeaderColor('#6D9886') : setHeaderColor('393E46')
+          }} />
         </Box>
 
         <List sx={{ display: "flex" }}>
           {midLinks.map(({ title, path }) => (
-            <ListItem component={NavLink} to={path} key={path} sx={navStyles}>
+            <ListItem exact component={NavLink} to={path} key={path} sx={navStyles}>
               {title.toUpperCase()}
             </ListItem>
           ))}

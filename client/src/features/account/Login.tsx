@@ -1,16 +1,16 @@
-import Avatar from "@mui/material/Avatar";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { Paper } from "@material-ui/core";
-import { Link, useHistory, useLocation } from "react-router-dom";
-import { FieldValues, useForm } from "react-hook-form";
-import { LoadingButton } from "@mui/lab";
-import { useAppDispatch } from "../../app/store/configureStore";
-import { signInUser } from "./accountSlice";
+import Avatar from '@mui/material/Avatar';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { Paper } from '@mui/material';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { FieldValues, useForm } from 'react-hook-form';
+import { LoadingButton } from '@mui/lab';
+import { useAppDispatch } from '../../app/store/configureStore';
+import { signInUser } from './accountSlice';
 
 export default function Login() {
   const history = useHistory();
