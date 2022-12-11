@@ -36,7 +36,7 @@ namespace API.Controllers
         {
             return await _context.Orders
                 .ProjectOrderToOrderDto()
-                .Where(x => x.Id == id && x.BuyerId == User.Identity.Name)
+                .Where(x => x.BuyerId == User.Identity.Name && x.Id == id)
                 .FirstOrDefaultAsync();
         }
 
@@ -91,7 +91,7 @@ namespace API.Controllers
                 var user = await _context.Users
                     .Include(a => a.Address)
                     .FirstOrDefaultAsync(x => x.UserName == User.Identity.Name);
-                    
+
                 var address = new UserAddress
                 {
                     FullName = orderDto.ShippingAddress.FullName,
@@ -109,7 +109,7 @@ namespace API.Controllers
 
             if (result) return CreatedAtRoute("GetOrder", new { id = order.Id }, order.Id);
 
-            return BadRequest("Problem creating order");
+            return BadRequest(new ProblemDetails { Title = "Problem creating order" });
         }
     }
 }

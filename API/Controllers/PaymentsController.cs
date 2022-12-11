@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using API.Controllers;
+using API.Services;
 using API.Data;
 using API.DTOs;
 using API.Entities.OrderAggregate;
@@ -14,13 +14,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Stripe;
 
-namespace API.Services
+namespace API.Controllers
 {
     public class PaymentsController : BaseApiController
     {
         private readonly PaymentService _paymentService;
         private readonly StoreContext _context;
-        public IConfiguration _config { get; }
+        public IConfiguration _config;
         public PaymentsController(PaymentService paymentService, StoreContext context, IConfiguration config)
         {
             _config = config;

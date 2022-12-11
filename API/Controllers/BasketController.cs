@@ -17,7 +17,6 @@ namespace API.Controllers
         public BasketController(StoreContext context)
         {
             _context = context;
-
         }
 
         [HttpGet(Name = "GetBasket")]
@@ -41,7 +40,7 @@ namespace API.Controllers
 
             var product = await _context.Products.FindAsync(productId);
 
-            if (product == null) return BadRequest(new ProblemDetails { Title = "Product Not Found" });
+            if (product == null) return BadRequest(new ProblemDetails { Title = "Product not found" });
 
             basket.AddItem(product, quantity);
 
@@ -95,7 +94,7 @@ namespace API.Controllers
             if (string.IsNullOrEmpty(buyerId))
             {
                 buyerId = Guid.NewGuid().ToString();
-                var cookieOptions = new CookieOptions { IsEssential = true, Expires = DateTime.Now.AddDays(30) };
+                var cookieOptions = new CookieOptions { IsEssential = true, Expires = DateTime.UtcNow.AddDays(30) };
                 Response.Cookies.Append("buyerId", buyerId, cookieOptions);
             }
 
